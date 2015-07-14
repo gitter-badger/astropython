@@ -26,7 +26,9 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['.pythonanywhere.com','.astropython.org',]
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
