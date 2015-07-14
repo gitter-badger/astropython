@@ -51,6 +51,7 @@ INSTALLED_APPS += (
 MIDDLEWARE_CLASSES += (
     'secretballot.middleware.SecretBallotIpUseragentMiddleware',
     'watson.middleware.SearchContextMiddleware',
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
     )
 
 ROOT_URLCONF = 'astropython.urls'
