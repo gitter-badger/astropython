@@ -77,11 +77,14 @@ AUTHENTICATION_BACKENDS += (
     'social.backends.twitter.TwitterOAuth',
 )
 
-#Database configuration
+#Database configuration(Need to change this !)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'amanjhunjhunwala$Astropython',
+        'USER': 'amanjhunjhunwala',
+        'PASSWORD': 'astropython',
+        'HOST': 'mysql.server',
     }
 }
 
