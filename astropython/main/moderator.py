@@ -8,7 +8,7 @@ from .models import *
 class Moderator(GenericModerator):
     fields_exclude=['updated','hits']
     visible_until_rejected=True
-    auto_approve_for_groups=['Trusted Users','Moderators']
+    auto_approve_for_groups=['*']
     auto_reject_for_groups=['Banned Users']
 
 
