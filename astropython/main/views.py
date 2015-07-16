@@ -3,6 +3,7 @@ from django.contrib.auth import logout
 from django.core.paginator import Paginator
 from django.core.urlresolvers import reverse
 from django.db.models import Q
+from django.db.models.functions import Lower
 
 from moderation.helpers import automoderate
 
@@ -111,11 +112,16 @@ def all(request,section,**kwargs):
         message+="Ordered by "+sort+"   "
         if sort=="ratings":
             obj_list=model.objects.all().filter(state="submitted").order_by('-total_upvotes')
-        elif sort=="recommended" and section=="packages":
-            obj_list=model.objects.all().filter(category="Recommended").order_by('-created')
+        elif sort=="alphabetical":
+             obj_list=model.objects.all().filter(state="submitted").order_by(Lower('title'))
+        elif section=="packages" and sort=="recommended":
+                obj_list=model.objects.all().filter(category="Recommended").order_by('-created')
         else:
             obj_list=model.objects.all().filter(state="submitted").order_by('-created')
     else:
+        if section=="packages":
+             obj_list=model.objects.all().filter(state="submitted").order_by(Lower('title'))
+        else:
             obj_list=model.objects.all().filter(state="submitted").order_by('-created')
     if 'tags' in request.GET:
         tags=request.GET['tags']
@@ -138,9 +144,9 @@ def all(request,section,**kwargs):
             obj_list=obj_list.filter(authors__username__startswith = "Feed").distinct()
     length=len(obj_list)
     if section=="packages":
-        paginator = Paginator(obj_list,30)
+        paginator = Paginator(obj_list,100)
     else:
-        paginator = Paginator(obj_list,10)
+        paginator = Paginator(obj_list,15)
     page = request.GET.get('page')
     try:
         obj=paginator.page(page)
