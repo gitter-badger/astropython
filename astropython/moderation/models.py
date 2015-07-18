@@ -14,7 +14,8 @@ from moderation.fields import SerializedObjectField
 from moderation.signals import post_moderation, pre_moderation
 from moderation.managers import ModeratedObjectManager
 
-from django.utils import timezone as datetime
+import datetime
+
 
 MODERATION_READY_STATE = 0
 MODERATION_DRAFT_STATE = 1
@@ -52,8 +53,8 @@ class ModeratedObject(models.Model):
         default=MODERATION_STATUS_PENDING,
         editable=False)
     moderated_by = models.ForeignKey(
-        getattr(settings, 'AUTH_USER_MODEL', 'auth.User'),
-        blank=True, null=True, editable=False,
+        getattr(settings, 'AUTH_USER_MODEL', 'auth.User'), 
+        blank=True, null=True, editable=False, 
         related_name='moderated_by_set')
     moderation_date = models.DateTimeField(editable=False, blank=True,
                                            null=True)
@@ -61,8 +62,8 @@ class ModeratedObject(models.Model):
     changed_object = SerializedObjectField(serialize_format='json',
                                            editable=False)
     changed_by = models.ForeignKey(
-        getattr(settings, 'AUTH_USER_MODEL', 'auth.User'),
-        blank=True, null=True, editable=True,
+        getattr(settings, 'AUTH_USER_MODEL', 'auth.User'), 
+        blank=True, null=True, editable=True, 
         related_name='changed_by_set')
 
     objects = ModeratedObjectManager()

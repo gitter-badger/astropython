@@ -20,10 +20,11 @@ from django.contrib.auth.models import User,Group
 initialize() will be used to create Groups and other general entities in the future
 """
 def initialize():
-    User.objects.create_superuser(username="admin",password="admin",email="test@example.com")
+
     Group.objects.get_or_create(name="Trusted Users")
-    Group.objects.get_or_create(name="Moderators")
+    Group.objects.get_or_create(name="Preview Users")
     Group.objects.get_or_create(name="Banned Users")
+    User.objects.create_superuser(username="admin",password="admin",email="test@example.com")
     ob=Wiki.objects.create(title="Wiki HomePage",input_type="WYSIWYG",state="submitted",slug="home",body=' "<h1>From our friends at Astrobetter !</h1>\
 \
 <p>This is the companion wiki to the <a class="wiki" href="http://www.astrobetter.com">AstroBetter Blog</a>. You can register (see right sidebar) to edit or comment on wiki pages. Please, share your expertise with us! If you have questions or do not know where to add your content, please email us at admin <a class="wiki" href="at">at</a> astrobetter.com</p>\

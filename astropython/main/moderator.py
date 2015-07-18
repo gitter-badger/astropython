@@ -8,13 +8,9 @@ from .models import *
 class Moderator(GenericModerator):
     fields_exclude=['updated','hits']
     visible_until_rejected=True
+    auto_approve_for_superusers=True
+    auto_approve_for_staff=True
     auto_approve_for_groups=['Preview Users','Trusted Users']
-
-
-    def is_auto_approve(self, obj, user):
-        if obj.state == "raw":
-            return self.reason('Not Submitted Yet !')
-        super(Moderator, self).is_auto_approve(obj, user)
 
 moderation.register(Tutorial,Moderator)
 moderation.register(Snippet,Moderator)
