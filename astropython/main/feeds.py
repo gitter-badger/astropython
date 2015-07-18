@@ -2,7 +2,7 @@ from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
 from django.utils.feedgenerator import Atom1Feed,Rss201rev2Feed
 
-from .utilities import get_all_objects
+from .utilities import get_all_native_objects
 
 """
 REPLACE HARDCODED URLS TO ASTROPYTHON.ORG
@@ -14,7 +14,7 @@ class RSSFeed(Feed):
     description = "This feed hosts all the posts posted on Astrpython.org"
 
     def items(self):
-        return get_all_objects('all')
+        return get_all_native_objects('all')
 
     def item_title(self, item):
         return item.title

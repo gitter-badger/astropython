@@ -12,6 +12,8 @@ from taggit.managers import TaggableManager
 import secretballot
 import watson
 
+from django.db.models.signals import post_save
+from .signals import add_to_preview
 from astropython.settings import STATE_CHOICES,INPUT_CHOICES
 
 PACKAGE_CHOICES = (
@@ -152,6 +154,8 @@ class Feed(models.Model):
 
     def __unicode__(self):
 		return self.title
+
+post_save.connect(add_to_preview,sender=User)
 
 secretballot.enable_voting_on(Tutorial)
 secretballot.enable_voting_on(Snippet)

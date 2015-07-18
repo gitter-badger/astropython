@@ -13,8 +13,6 @@ auto_discover()# from moderation app -alway keep below admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^grappelli/', include('grappelli.urls')), #for admin urls
-    url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^newsletter/', include('newsletter.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')), #for social auth urls
     url(r'^admin/', include(admin.site.urls)), #additional admin urls
     url(r'^search$','main.views.search',name="search"),

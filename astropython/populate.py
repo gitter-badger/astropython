@@ -106,50 +106,53 @@ def populate(path_localdata,obj):
     typeObj=type(obj)#Find which type of model we are populating
     no=len(os.walk(path_localdata).next()[2])#find no. of json files in the directory
     for i in range(1,no+1):
-        with open(path_localdata+"//"+str(i)+".json") as data_file:#open the json file
-            data=json.load(data_file)#load data in python variable
-            t=typeObj()#create a new object
-            for name in data:
-                if (name=='tags'):
-                    pass
-                    """
-                        for items in data[name]:
-                            s1=str(items)
-                            t.tags.add(s1)#Add tags one by one.Note that this handles duplicate tags automatically
-                    """
-                else:
-                    s=data[name]#Find the field
-                    if(name=='author'):
-                        author=s
-                    elif(name=='title'):
-                        title=s
-                    elif(name=='description'):
-                        desc=s
-                    elif(name=='date_published'):
-                        date=s
-            t.title=title#Set the title
-            t.body=desc#Add the body
-            t.input_type="WYSIWYG"
-            t.state="submitted"
-            t.slug=slugify(title)+str(random.randrange(1,100+1))#If 2 objects have same title,this prevents the same slug from being generated
-            try:
-                t.save()#Save the current state
-            except:
-                continue
-            #t.published=datetime.datetime.strptime(date,"%Y-%m-%d") #Add publishing date
-            u=User.objects.get_or_create(username=author)#If user is absent, create user
-            t.save()
-            if(u[1]==True):
-                u[0].save()#If the user is not present ,create it
-            t.authors.add(u[0])
-            t.save()#save all elements
-            for name in data:
-                if (name=='tags'):
-                        for items in data[name]:
-                            s1=str(items)
-                            t.tags.add(s1)#Add tags one by one.Note that this handles duplicate tags automatically
-            print("Entered an element successfully!")
-
+        try:
+            with open(path_localdata+"//"+str(i)+".json") as data_file:#open the json file
+                data=json.load(data_file)#load data in python variable
+                t=typeObj()#create a new object
+                for name in data:
+                    if (name=='tags'):
+                        pass
+                        """
+                            for items in data[name]:
+                                s1=str(items)
+                                t.tags.add(s1)#Add tags one by one.Note that this handles duplicate tags automatically
+                        """
+                    else:
+                        s=data[name]#Find the field
+                        if(name=='author'):
+                            author=s
+                        elif(name=='title'):
+                            title=s
+                        elif(name=='description'):
+                            desc=s
+                        elif(name=='date_published'):
+                            date=s
+                t.title=title#Set the title
+                t.body=desc#Add the body
+                t.input_type="WYSIWYG"
+                t.state="submitted"
+                t.slug=slugify(title)+str(random.randrange(1,100+1))#If 2 objects have same title,this prevents the same slug from being generated
+                try:
+                    t.save()#Save the current state
+                except:
+                    continue
+                #t.published=datetime.datetime.strptime(date,"%Y-%m-%d") #Add publishing date
+                u=User.objects.get_or_create(username=author)#If user is absent, create user
+                t.save()
+                if(u[1]==True):
+                    u[0].save()#If the user is not present ,create it
+                t.authors.add(u[0])
+                t.save()#save all elements
+                for name in data:
+                    if (name=='tags'):
+                            for items in data[name]:
+                                s1=str(items)
+                                t.tags.add(s1)#Add tags one by one.Note that this handles duplicate tags automatically
+                print("Entered an element successfully!")
+        except IOError:
+            no=no+1
+            continue
 # Start execution here!
 if __name__ == '__main__':
     _temp_orig_path=os.getcwd()

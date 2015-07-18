@@ -43,7 +43,7 @@ BLOG CONTENT
 					<div class="single-blog timeline">
 						<div class="post-content overflow">
 							<h2 class="post-title bold"><a href="{{obj.get_absolute_url}}">{{obj.title}}</a></h2>
-							<h3 class="post-author"><a href="#">Posted by {% for users in obj.authors.all %}{{users.username}}{% endfor %}</a></h3>
+							<h3 class="post-author"><a href="#"><b>Posted by {% for users in obj.authors.all %}{{users.username}}{% endfor %}</b></a></h3>
 							{% if section == "events" %}
 								<p><b>Start Date :</b>{{obj.start_date_time|date}}</p>
 								{% if obj.website %}
@@ -71,7 +71,7 @@ BLOG CONTENT
 					<div class="single-blog timeline">
 						<div class="post-content overflow">
 							<h2 class="post-title bold"><a href="{{obj.get_absolute_url}}">{{obj.title}}</a></h2>
-							<h3 class="post-author"><a href="#">Posted by {% for users in obj.authors.all %}{{users.username}}{% endfor %}</a></h3>
+							<h3 class="post-author"><a href="#"><b>Posted by {% for users in obj.authors.all %}{{users.username}}{% endfor %}</b></a></h3>
 							{% if section == "events" %}
 								<p><b>Start Date :</b>{{obj.start_date_time|date}}</p>
 								{% if obj.website %}

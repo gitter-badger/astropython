@@ -61,7 +61,7 @@ BLOG CONTENT
 				<div class="single-blog single-column">
 					<div class="post-content overflow">
 						<h2 class="post-title bold"><a href="../{{section}}/{{single_obj.slug}}">{{single_obj.title}}</a></h2>
-						<h3 class="post-author"><a href="#">Posted by {% for users in single_obj.authors.all %}{{users.username}}{% endfor %}</a></h3>
+						<h3 class="post-author"><a>Posted by <b>{% for users in single_obj.authors.all %}{{users.username}}{% endfor %}</b></a></h3>
 						{% if section == "events" %}
 							<p><b>Start Date :</b>{{single_obj.start_date_time|date}}</p>
 							{% if single_obj.website %}
@@ -80,7 +80,7 @@ BLOG CONTENT
 						<div class="post-bottom overflow">
 							<ul class="nav navbar-nav post-nav">
 								<li><a><i class="fa fa-tag">&nbsp&nbsp{% for tag in single_obj.tags.all %}{{tag.name}}&nbsp&nbsp&nbsp {% endfor %}</i></a> </li>
-								<li><a href="#"><i class="fa fa-heart"></i>{{single_obj.total_upvotes}} Love</a></li>
+								<li><a><i class="fa fa-heart"></i>{{single_obj.total_upvotes}} Love</a></li>
 							</ul>
 						</div>
 					</div>

@@ -1,4 +1,5 @@
 from django.shortcuts import Http404
+from django.db.models import Q
 import random
 from slugify import slugify
 
@@ -147,6 +148,14 @@ def get_all_objects(section):
     model_list=get_section_models(section)
     for model in model_list:
             object_list=chain(object_list,(model.objects.filter(state="submitted").order_by('created').all()))
+    object_list = sorted(object_list, key=attrgetter('created'),reverse=True)
+    return object_list
+
+def get_all_native_objects(section):
+    object_list=[]
+    model_list=get_section_models(section)
+    for model in model_list:
+            object_list=chain(object_list,(model.objects.filter(~Q(authors__username__startswith = "Feed")).filter(state="submitted").order_by('created').all()))
     object_list = sorted(object_list, key=attrgetter('created'),reverse=True)
     return object_list
 
