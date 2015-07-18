@@ -13,7 +13,7 @@ import secretballot
 import watson
 
 from django.db.models.signals import post_save
-from .signals import add_to_preview
+from .signals import add_to_preview,add_content
 from astropython.settings import STATE_CHOICES,INPUT_CHOICES
 
 PACKAGE_CHOICES = (
@@ -156,6 +156,16 @@ class Feed(models.Model):
 		return self.title
 
 post_save.connect(add_to_preview,sender=User)
+post_save.connect(add_content,sender=Tutorial)
+post_save.connect(add_content,sender=Snippet)
+post_save.connect(add_content,sender=Wiki)
+post_save.connect(add_content,sender=Announcement)
+post_save.connect(add_content,sender=News)
+post_save.connect(add_content,sender=Blog)
+post_save.connect(add_content,sender=Event)
+post_save.connect(add_content,sender=EducationalResource)
+post_save.connect(add_content,sender=Package)
+
 
 secretballot.enable_voting_on(Tutorial)
 secretballot.enable_voting_on(Snippet)

@@ -3,11 +3,11 @@
   @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
   @import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700);
 ::-moz-selection { /* Code for Firefox */
-    background: #F6EFB1;
+    background: #FFE680;
 }
 
 ::selection {
-    background: #F6EFB1;
+    background: #FFE680;
 }
   
   body {
@@ -26,7 +26,7 @@
 
   a{
 	font-weight: bold;
-    color:#F6EFB1;
+    color:#FFE680;
   }
 
   a:hover {
@@ -81,7 +81,7 @@
   .btn-common {
     font-size: 14px;
     color: #797979;
-    border: 1px solid #F6EFB1;
+    border: 1px solid #FFE680;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     padding: 10px 25px;
@@ -101,7 +101,7 @@
     outline: none;
     background: none;
     box-shadow: none;
-    color: #F6EFB1;
+    color: #FFE680;
   }
 
   .align-right{
@@ -158,7 +158,7 @@
 }
 
 .search i{
-  color: #F6EFB1;
+  color: #FFE680;
   cursor: pointer;
   position: absolute;
   right: 10px;
@@ -180,7 +180,7 @@
   color: #818285;
   font-weight: 300;
   outline: none;
-  border: 1px solid #F6EFB1;
+  border: 1px solid #FFE680;
   margin-top: 20px;
   border-radius: 4px;
 }
@@ -203,7 +203,7 @@
 
 .social-icons ul li a:hover,
 .social-icons ul li a:focus{
-  color:#F6EFB1;
+  color:#FFE680;
   background: none;
 }
 
@@ -245,11 +245,11 @@
 .navbar-inverse .navbar-nav > .open > a {
   background-color: inherit;
   border: 0;
-  color: #F6EFB1;
+  color: #FFE680;
 }
 
 #header .navbar-inverse .navbar-nav  li a:hover{
-  color: #F6EFB1;
+  color: #FFE680;
 }
 
 
@@ -272,7 +272,7 @@ ul.sub-menu {
 
 #header .navbar-nav li ul.sub-menu li .active{
   background: #FFFF99;
-  color: #F6EFB1;
+  color: #FFE680;
   position: relative;
 }
 
@@ -280,7 +280,7 @@ ul.sub-menu {
   position: absolute;
   font-size: 56px;
   top: -13px;
-  color: #F6EFB1;
+  color: #FFE680;
 }
 
 #header .navbar-nav li ul.sub-menu li .active .fa-angle-right{
@@ -294,7 +294,7 @@ ul.sub-menu {
 
 #header .navbar-nav li ul.sub-menu li a:hover,
 #header .navbar-nav li ul.sub-menu li a:focus{
-  background: #F6EFB1 ;
+  background: #FFE680 ;
   color: black;
 }
 
@@ -375,7 +375,7 @@ ul.sub-menu {
 }
 
 .bottom .media-body h3 a{
-  color: #F6EFB1;
+  color: #FFE680;
 }
 
 .testimonial .media{
@@ -405,7 +405,7 @@ ul.sub-menu {
   top: 8px;
   content: '"';
   font-size: 40px;
-  color: #F6EFB1;
+  color: #FFE680;
   font-family: 'Noto Sans', sans-serif;
   transform:rotate(180deg);
   -ms-transform:rotate(180deg); /* IE 9 */
@@ -419,7 +419,7 @@ ul.sub-menu {
   bottom: 14px;
   content: '"';
   font-size: 40px;
-  color: #F6EFB1;
+  color: #FFE680;
   font-family: 'Noto Sans', sans-serif;
   line-height: 0;
 }
@@ -439,14 +439,14 @@ ul.sub-menu {
 
 .form-control:hover, 
 .form-control:focus{
-  border-color: #F6EFB1;
+  border-color: #FFE680;
   outline: none;
   box-shadow: none;
 }
 
 .btn-submit {
   width: 100%;
-  background-color: #F6EFB1;
+  background-color: #FFE680;
   color: #fff;
   font-size: 14px;
   font-weight: 300;
@@ -610,7 +610,7 @@ ul.sub-menu {
   font-size: 48px;
   height: 48px;
   line-height: 48px;
-  color: #F6EFB1;
+  color: #FFE680;
   position: absolute;
   left: 50%;
   margin-left: -24px;
@@ -623,7 +623,7 @@ ul.sub-menu {
 #page-breadcrumb {
   background-image: url(../images/home/tour-bg.png);
   background-size:700px 200px;
-  background-color: #F6EFB1;
+  background-color: #FFE680;
   background-repeat: no-repeat;
   height: 155px;
   background-position: center;
@@ -777,8 +777,8 @@ ul.sub-menu {
 }
 
 .portfolio-view .nav-pills li a:hover {
-  color: #E6B800;
-  border-color: #E6B800;
+  color: #FFE680;
+  border-color: #FFE680;
   -webkit-transition: all 0.9s ease;
   transition: all 0.9s ease;
 }
@@ -902,8 +902,8 @@ ul.sub-menu {
 .pagination .active a:hover,
 .pagination .active a:focus{
   background: none;
-  border-color: #F6EFB1;
-  color: #F6EFB1;
+  border-color: #FFE680;
+  color: #FFE680;
 }
 
 
@@ -941,19 +941,19 @@ Portfolio with right sidebar
 .categories .navbar-stacked li a:hover{
   background: none;
   margin-left: 20px;
-  color: #F6EFB1;
+  color: #FFE680;
   opacity: 1;
 }
 
 .categories .navbar-stacked li.active a{
-  color: #F6EFB1;
+  color: #FFE680;
   padding-left: 20px;
 }
 
 .categories .navbar-stacked li.active a:before{
   position: absolute;
   content: "";
-  border-color: transparent transparent transparent #F6EFB1;
+  border-color: transparent transparent transparent #FFE680;
   border-width: 8px;
   border-style: solid;
   left: 0;
@@ -993,14 +993,14 @@ Portfolio with right sidebar
 }
 
 .sidebar-item .media:hover{
-  border-left: 2px solid #F6EFB1;
+  border-left: 2px solid #FFE680;
   padding-left: 5px;
   transition: all 0.3s ease 0s;
   -webkit-transition: all 0.3s ease 0s;
 }
 
 .sidebar-item .media:hover.media .media-body h4 a{
-  color: #F6EFB1;
+  color: #FFE680;
   transition: all 0.3s ease 0s;
   -webkit-transition: all 0.3s ease 0s;
 }
@@ -1040,7 +1040,7 @@ Portfolio with right sidebar
 }
 
 .tag-cloud .nav-pills li a:hover{
-  background: #F6EFB1;
+  background: #FFE680;
 }
 
 .popular ul.gallery {
@@ -1130,7 +1130,7 @@ Blog Default
   border-style: solid;
   border-width: 60px;
   content: "";
-  border-color: transparent transparent #F6EFB1 transparent;
+  border-color: transparent transparent #FFE680 transparent;
   z-index: -1;
   cursor: initial;
 }
@@ -1161,7 +1161,7 @@ Blog Default
   border-left-style: solid;
   border-left-width: 1px;
   height: 100%;
-  border-left-color: #F6EFB1;
+  border-left-color: #FFE680;
   left: 50%;
   margin-left: -2px;
 }
@@ -1221,7 +1221,7 @@ Blog Default
 
 .post-title a:hover,
 .comments-number a:hover{
-  color: #F6EFB1;
+  color: #FFE680;
 }
 
 .post-content .post-author{
@@ -1235,7 +1235,7 @@ Blog Default
 }
 
 a.read-more{
-  color: #F6EFB1;
+  color: #FFE680;
   font-weight: 300;
 }
 
@@ -1308,7 +1308,7 @@ Blog with right sidebar
 }
 
 .post-nav li a i{
-  color: #F6EFB1;
+  color: #FFE680;
   margin-right: 8px;
 }
 

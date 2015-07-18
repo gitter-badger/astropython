@@ -11,6 +11,8 @@ class Moderator(GenericModerator):
     auto_approve_for_superusers=True
     auto_approve_for_staff=True
     auto_approve_for_groups=['Preview Users','Trusted Users']
+    notify_user=False
+    notify_moderator=False
 
 moderation.register(Tutorial,Moderator)
 moderation.register(Snippet,Moderator)
