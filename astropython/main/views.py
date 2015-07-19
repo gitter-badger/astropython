@@ -67,7 +67,6 @@ def single(request,section,slug,**kwargs):
         mode="edit"
         if form.is_valid():
             instance=form.save(commit=False)
-            instance.hits=instance.hits + 1
             user=get_user(request)
             instance.save()
             form.save_m2m()
@@ -75,9 +74,8 @@ def single(request,section,slug,**kwargs):
             return HttpResponseRedirect(reverse('single',kwargs={'section':section,'slug':obj.slug}))
     else:
         form=None
-    popular=model.objects.all().filter(state="submitted").order_by('-hits')[:5]
     recent=model.objects.all().filter(state="submitted").order_by('-created')[:5]
-    return render(request,'single.html',{'obj':obj,'section':section,'full_url':request.build_absolute_uri(),"mode":mode,"form":form,"tags":tags,'page':'single','recent':recent,'popular':popular})
+    return render(request,'single.html',{'obj':obj,'section':section,'full_url':request.build_absolute_uri(),"mode":mode,"form":form,"tags":tags,'page':'single','recent':recent})
 
 
 def vote(request,section,choice,slug):

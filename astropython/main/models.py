@@ -36,13 +36,12 @@ SECTION_CHOICES = (
 class BasePost(models.Model):
     title = models.CharField(max_length=200)#Title of the Post
     input_type=models.CharField(max_length=60,choices=INPUT_CHOICES,default="Markdown",verbose_name='Text Editor Choice',help_text='All current editor contents will be lost once editors are switched')
-    abstract = models.TextField(null=True,blank=True,help_text='Optional Summary of Post') #Short abstract of the tutorial
+    abstract = models.TextField(blank=True,default="",help_text='Optional Summary of Post') #Short abstract of the tutorial
     authors = models.ManyToManyField(User,blank=True,null=True) # Collaborators of a tutorial
     body = models.TextField(blank=False,verbose_name='Page Body / Contents')
     slug = models.SlugField(unique=True) #Slug to a tutorial
     state = models.CharField(max_length=60,choices=STATE_CHOICES,default='raw') #State of a tutorial
     tags=TaggableManager() #Tags
-    hits = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)  # Date when first revision was created
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)  # Date when last revision was created (even if not published)
 
@@ -115,7 +114,6 @@ class Event(models.Model):
     slug = models.SlugField(unique=True)
     state = models.CharField(max_length=60,choices=STATE_CHOICES,default='raw')
     tags=TaggableManager()
-    hits = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)  # Date when first revision was created
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)  # Date when last revision was created (even if not published)
     start_date_time = models.DateTimeField(help_text="Format : YYYY-MM-DD")#start time
@@ -140,7 +138,7 @@ class Event(models.Model):
 
 class Contact(models.Model):
     username=models.CharField(max_length=60)
-    email=models.URLField(blank=False)
+    email=models.CharField(blank=False,max_length=60)
     content=models.TextField(blank=False)
 
     def __unicode__(self):
