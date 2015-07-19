@@ -10,7 +10,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 from config import *
-from spirit.settings import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -34,7 +33,14 @@ ALLOWED_HOSTS = ['*']
 
 #Do not change the order of installed apps
 
-INSTALLED_APPS += (
+INSTALLED_APPS = (
+    'grappelli', # Cleaner admin panel,
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
     'taggit', # Easy tagging functionality
     'secretballot',
     'crispy_forms',
@@ -46,11 +52,37 @@ INSTALLED_APPS += (
     'social.apps.django_app.default',#Social  Authentication
 )
 
-MIDDLEWARE_CLASSES += (
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'secretballot.middleware.SecretBallotIpUseragentMiddleware',
     'watson.middleware.SearchContextMiddleware',
     'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
     )
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.template.context_processors.request',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 ROOT_URLCONF = 'astropython.urls'
 
@@ -68,7 +100,7 @@ TEMPLATES[0]['OPTIONS']['loaders'] = (
 
 
 #Add social auth options here
-AUTHENTICATION_BACKENDS += (
+AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOAuth2',
     'social.backends.github.GithubOAuth2',
     'social.backends.yahoo.YahooOAuth',

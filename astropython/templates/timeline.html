@@ -51,7 +51,7 @@ BLOG CONTENT
 								{% endif %}
 							{% else %}
 								{% if obj.abstract %}
-								<p>{% autoescape off %}{{obj.abstract|truncatechars:350}}{% endautoescape %}</p>
+								<p>{% autoescape off %}{{obj.abstract}}{% endautoescape %}</p>
 								{% else %}
 								{% filter truncatechars:350 %}
 								<p>{{obj.body|raw_content}}</p>
@@ -79,7 +79,7 @@ BLOG CONTENT
 								{% endif %}
 							{% else %}
 								{% if obj.abstract %}
-								<p>{% autoescape off %}{{obj.abstract|truncatechars:350}}{% endautoescape %}</p>
+								<p>{% autoescape off %}{{obj.abstract}}{% endautoescape %}</p>
 								{% else %}
 								{% filter truncatechars:350 %}
 								<p>{{obj.body|raw_content}}</p>

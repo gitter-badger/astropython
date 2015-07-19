@@ -48,8 +48,7 @@
 							<li><a href="{% url 'all' 'news' %}">News</a></li>
                         </ul>
 					</li>       
-					<li><a href="{% url 'all' 'packages' %}">Packages</a></li>	
-					<li><a href="/qa">Q & A(DEV)</a></li>						
+					<li><a href="{% url 'all' 'packages' %}">Packages</a></li>					
 					{% if request.user.is_authenticated %}
 					<li><a href="{% url 'user_posts' %}">My Posts</a></li>
 					<li><a href="{% url 'logout' %}">Logout</i></a></li>

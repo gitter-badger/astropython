@@ -19,7 +19,6 @@ urlpatterns = patterns('',
     url(r'^$', 'main.views.home', name='home'),#home url
     url(r'^logout/', 'main.views.logout_view', name='logout'),#Sample Templates
     url(r'',include('main.urls')),#Teach and Learn
-    url(r'^qa/', include('spirit.urls')),
 )
 
 #Access Static Files if in development
