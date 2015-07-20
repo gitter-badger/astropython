@@ -45,15 +45,20 @@ BLOG CONTENT
 			{% endif %}
 			{% if section == "packages" %}
 			<div class="masonery_area">
+			<table align="center" cellpadding="30" style="width:100%">
+			<tr style="border-bottom:1pt solid black;">
+				<td style="vertical-align: center;horizontal-align:center;padding:15px;"><h2>Title</h2></td>
+				<td style="vertical-align: center;padding:15px;"><h2>Abstract</h2></td> 
+				<td style="vertical-align: center;padding:15px;"><h2>Tags</h2></td>
+			 </tr>
 			{% for single_obj in obj %}
-			 <div class="col-md-4 col-sm-4">
-				<div class="single-blog two-column">
-					<div class="post-content overflow">
-						<h2 class="post-title bold"><a href="../{{section}}/{{single_obj.slug}}">{{single_obj.title}}</a></h2>
-					</div>
-				</div>
-			</div>
-		{% endfor %}
+			<tr style="border-bottom:1pt dotted gray;">
+				<td style="vertical-align: center;padding:15px;"><a href="../{{section}}/{{single_obj.slug}}"><h3><b>{{single_obj.title}}</b></h3></a></td>
+				<td style="vertical-align: center;padding:15px;">{{single_obj.abstract}}</td> 
+				<td style="vertical-align: center;padding:15px;color:#E6CC80"><i class="fa fa-tag">&nbsp&nbsp{% for tag in single_obj.tags.all %}{{tag.name}}&nbsp&nbsp&nbsp {% endfor %}</i></td>
+			  </tr>
+			{% endfor %}
+			</table>
 		</div>
 			{% else %}
 			{% for single_obj in obj %}

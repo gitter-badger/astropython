@@ -26,9 +26,9 @@
 		<ul class="nav nav-pills">
 		{% for tag in tags %}
 			{% if request.GET.tags %}
-			<li><a href="?tags={{request.GET.tags}},{{tag.name}}{% if get.sort %}&sort={{get.sort}}{% endif %}{% if get.filter %}&filter={{get.filter}}{% endif %}">{{tag.name}}</a></li>
+			<li><a href="?tags={{request.GET.tags}},{{tag.name}}{% if get.sort %}&sort={{get.sort}}{% endif %}{% if get.filter %}&filter={{get.filter}}{% endif %}"><b>{{tag.name}}</b></a></li>
 			{% else %}
-			<li><a href="?tags={{tag.name}}{% if get.sort %}&sort={{get.sort}}{% endif %}{% if get.filter %}&filter={{get.filter}}{% endif %}">{{tag.name}}</a></li>
+			<li><a href="?tags={{tag.name}}{% if get.sort %}&sort={{get.sort}}{% endif %}{% if get.filter %}&filter={{get.filter}}{% endif %}"><b>{{tag.name}}</b></a></li>
 			{% endif %}
 		{% endfor %}
 		</ul>

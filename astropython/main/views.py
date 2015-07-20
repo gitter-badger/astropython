@@ -28,7 +28,11 @@ def logout_view(request):
 def create(request,section,**kwargs):
     model=get_model(section)
     name =get_name(section)
-    tags=model.tags.all()
+    tags=[]
+    t=model.tags.all()
+    for tag in t:
+        tags.append(tag.name)
+    tags= sorted(tags, key=lambda s: s.lower())
     exclude_fields = get_exclude_fields(model)
     form = get_create_form(request,exclude_fields,model,kwargs)
     if request.method=="POST":

@@ -174,12 +174,12 @@ BLOG CONTENT
 						 </div>
 						 {% endif %}
 						<br/>
-						<h5 class="post-author">Posted by <a href="#">{% for users in obj.authors.all %}{{users.username}}{% endfor %}</a></h5>
+						<h5 class="post-author">Posted by <a><b>{% for users in obj.authors.all %}{{users.username}}{% endfor %}</b></a></h5>
 							<div class="sidebar-item tag-cloud">
 								<h3 id="tags">Tags</h3>
 								<ul class="nav nav-pills">
 								{% for tag in obj.tags.all %}
-									<li><a href="/{{section}}/?tags={{tag.name}}">{{tag.name}}</a></li>
+									<li><a href="/{{section}}/?tags={{tag.name}}"><b>{{tag.name}}</b></a></li>
 								{% endfor %}
 								</ul>
 							</div>
