@@ -83,9 +83,9 @@ class Blog(BasePost):
         return reverse('main.views.single',kwargs={'section':'blog','slug':self.slug})
 
 class Package(BasePost):
-    category=models.CharField(max_length=60)
     homepage=models.URLField(blank=True,verbose_name="Homepage URL")#URL : homepage of the packages
     docs = models.URLField(blank=True,verbose_name="URL to Docs")
+    category=models.ManyToManyField('PackageCategory')
 
     def get_absolute_url(self):
         return reverse('main.views.single',kwargs={'section':'packages','slug':self.slug})
@@ -154,6 +154,12 @@ class Feed(models.Model):
 
     def __unicode__(self):
 		return self.title
+
+class PackageCategory(models.Model):
+    name=models.CharField(max_length=60)
+
+    def __unicode__(self):
+        return self.name
 
 post_save.connect(add_to_preview,sender=User)
 post_save.connect(add_content,sender=Tutorial)

@@ -31,6 +31,10 @@
 				  }
 				});
 			$("#id_abstract").attr({"rows": "4"});
+			{% if name == "Packages" %}
+			$("#div_id_category > .controls label").removeClass("checkbox");
+			$("#div_id_category > .controls label").addClass("checkbox-inline");
+			{% endif %}
 			changeEditor();
 	});
 	function revert(in_type){

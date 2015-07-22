@@ -54,7 +54,8 @@ BLOG CONTENT
 			{% for single_obj in obj %}
 			<tr style="border-bottom:1pt dotted gray;">
 				<td style="vertical-align: center;padding:15px;"><a href="../{{section}}/{{single_obj.slug}}"><h3><b>{{single_obj.title}}</b></h3></a></td>
-				<td style="vertical-align: center;padding:15px;">{{single_obj.abstract}}</td> 
+				<td style="vertical-align: center;padding:15px;">{% autoescape off %}{{single_obj.abstract}}{% endautoescape %}</td> 
+				<td style="vertical-align: center;padding:15px;">{{single_obj.homepage}}</td>
 				<td style="vertical-align: center;padding:15px;color:#E6CC80"><i class="fa fa-tag">&nbsp&nbsp{% for tag in single_obj.tags.all %}{{tag.name}}&nbsp&nbsp&nbsp {% endfor %}</i></td>
 			  </tr>
 			{% endfor %}
