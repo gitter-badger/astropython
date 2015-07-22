@@ -174,7 +174,7 @@ BLOG CONTENT
 						 </div>
 						 {% endif %}
 						<br/>
-						<h5 class="post-author">Posted by <a><b>{% for users in obj.authors.all %}{{users.username}}{% endfor %}</b></a></h5>
+						<h5 class="post-author">Posted by <a><b>{% for users in obj.authors.all %}{{users.username}}{% endfor %}</b></a> on <b>{{obj.published|date}}</b></h5>
 							<div class="sidebar-item tag-cloud">
 								<h3 id="tags">Tags</h3>
 								<ul class="nav nav-pills">

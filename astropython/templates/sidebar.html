@@ -40,7 +40,7 @@
 	<div class="media">
 		<div class="media-body">
 			<h4><a href="{% url 'single' section item.slug %}">{{item.title}}</a></h4>
-			<p>Posted on {{item.published}}</p>
+			<p>Posted on {{item.published|date}}</p>
 		</div>
 	</div>
 	{% endfor %}
