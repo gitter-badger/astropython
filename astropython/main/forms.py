@@ -13,6 +13,9 @@ def PostForm(model_type,form_fields,action,*args,**kwargs):
                 exclude=form_fields
             elif action=="edit":
                 fields=form_fields
+            if model_type==Package:
+                widgets = {'category': forms.CheckboxSelectMultiple(),}
+
         def __init__(self):
             super(PostForm, self).__init__(*args, **kwargs)
 

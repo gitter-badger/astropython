@@ -125,8 +125,8 @@ BLOG CONTENT
 							<p id="abstract"><b>Abstract :</b> {% autoescape off %}{{obj.abstract}}{% endautoescape %}</p>
 						{% endif %}
 						{% if section == "packages" %}
-							<p id="category"><b>Category : </b>{{obj.category}}</p>
-							{% if obj.homepage %}
+							<p id="category"><b>Category : </b>{% for ob in obj.category.all %}<em><b>{{ob.name}}&nbsp&nbsp&nbsp</b></em>{% endfor %}</p>
+							{% if obj.homepage %} 
 							<p id="homepage"><b>Homepage : </b><a href="{{obj.homepage}}">{{obj.homepage}}</a></p>
 							{% endif %}
 							{% if obj.docs %}
@@ -174,7 +174,7 @@ BLOG CONTENT
 						 </div>
 						 {% endif %}
 						<br/>
-						<h5 class="post-author">Posted by <a><b>{% for users in obj.authors.all %}{{users.username}}{% endfor %}</b></a></h5>
+						<h5 class="post-author">Posted by <a><b>{% for users in obj.authors.all %}{{users.username}}{% endfor %}</b></a> on <b>{{obj.published|date}}</b></h5>
 							<div class="sidebar-item tag-cloud">
 								<h3 id="tags">Tags</h3>
 								<ul class="nav nav-pills">
@@ -203,7 +203,7 @@ BLOG CONTENT
 		</div>
 	 </div>
 	<script type="text/javascript">
-		$( "#title,#abstract,#tags,#category,#homepage,#docs,#start_date_time,#end_date_time,#website,#location,#start_date,#instructor_names,#website,#language,#contents,#background,#faq").hover(
+		$( "#title,#abstract,#tags,#category,#homepage,#docs,#start_date_time,#end_date_time,#website,#location,#start_date,#instructor_names,#language,#contents,#background,#faq").hover(
 		  function() {
 			attribute=$(this).attr('id');
 			$( this ).append( $( "<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href='?edit="+attribute+"'><img src='{% static 'images/edit_logo.png' %}' height='15px' width='15px'></a></span>" ) );

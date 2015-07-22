@@ -10,7 +10,7 @@
 			<li><a href="?sort=recommended{% if get.filter %}&filter={{get.filter}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Recommended</a></li>
 			{% endif %}
 			<li><a href="?sort=ratings{% if get.filter %}&filter={{get.filter}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Ratings</a></li>
-			<li><a href="?sort=date{% if get.filter %}&filter={{get.filter}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Date Created</a></li>
+			<li><a href="?sort=date{% if get.filter %}&filter={{get.filter}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Date Published</a></li>
 		</ul>
 	</div>
 	<div class="sidebar-item categories">
@@ -40,7 +40,7 @@
 	<div class="media">
 		<div class="media-body">
 			<h4><a href="{% url 'single' section item.slug %}">{{item.title}}</a></h4>
-			<p>Posted on {{item.created}}</p>
+			<p>Posted on {{item.published|date}}</p>
 		</div>
 	</div>
 	{% endfor %}

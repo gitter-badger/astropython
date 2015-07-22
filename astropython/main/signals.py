@@ -10,7 +10,7 @@ def add_to_preview(sender,instance,**kwargs):
 
 @receiver(signals.post_moderation,dispatch_uid="moderation_approval")
 def moderation_approval(sender,instance,status,**kwargs):
-    try:
+    """try:
         if instance.state=="submitted":
             subject="AstroPython Post Approved !"
             message="Your post at AstroPython is approved"
@@ -18,12 +18,13 @@ def moderation_approval(sender,instance,status,**kwargs):
             from_email="notifications@astropython.org"
             send_mail(subject,message,from_email,[str(user.email) for user in instance.authors.all()], fail_silently=False,html_message=html_m)
     except:
-        print "No Email Provided"
+        print "No Email Provided"""
+    pass
 
 
 @receiver(post_save,dispatch_uid="add_content")
 def add_content(sender,instance,created,**kwargs):
-    if created==True:
+    """if created==True:
         try:
             subject="New AstroPython Post!"
             message="New post at AstroPython"
@@ -31,4 +32,5 @@ def add_content(sender,instance,created,**kwargs):
             from_email="notifications@astropython.org"
             send_mail(subject,message,from_email,["amanjjw@gmail.com"], fail_silently=False,html_message=html_m)
         except:
-            print "No Email Provided"
+            print "No Email Provided"""
+    pass

@@ -24,6 +24,9 @@ def initialize():
     Group.objects.get_or_create(name="Trusted Users")
     Group.objects.get_or_create(name="Preview Users")
     Group.objects.get_or_create(name="Banned Users")
+    PackageCategory.objects.create(name="Recommended")
+    PackageCategory.objects.create(name="Active")
+    PackageCategory.objects.create(name="Deprecated")
     User.objects.create_superuser(username="admin",password="admin",email="test@example.com")
     ob=Wiki.objects.create(title="Wiki HomePage",input_type="WYSIWYG",state="submitted",slug="home",body=' "<h1>From our friends at Astrobetter !</h1>\
 \
@@ -130,6 +133,20 @@ def populate(path_localdata,obj):
                         elif(name=='date_published'):
                             date=s
                 t.title=title#Set the title
+                if type(obj)==Package:
+                    try:
+                        p1=desc.index('Description')
+                        p_end=desc.index('<br/>',p1)
+                        p_temp=desc.index('Homepage URL:')
+                        p2=desc.index('>',p_temp)
+                        p2=p2+1
+                        p2_end=desc.index('</a>',p2)
+                        t.abstract=desc[p1+12:p_end]
+                        t.homepage=desc[p2:p2_end]
+                        temp=desc
+                        desc=temp[:p1]+temp[p2_end+4:]
+                    except:
+                        print title
                 t.body=desc#Add the body
                 t.input_type="WYSIWYG"
                 t.state="submitted"
@@ -138,7 +155,7 @@ def populate(path_localdata,obj):
                     t.save()#Save the current state
                 except:
                     continue
-                #t.published=datetime.datetime.strptime(date,"%Y-%m-%d") #Add publishing date
+                t.published=datetime.datetime.strptime(date,"%Y-%m-%d") #Add publishing date
                 u=User.objects.get_or_create(username=author)#If user is absent, create user
                 t.save()
                 if(u[1]==True):

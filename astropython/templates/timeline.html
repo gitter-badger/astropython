@@ -60,7 +60,7 @@ BLOG CONTENT
 							{% endif %}
 							<a href="{{obj.get_absolute_url}}" class="read-more">View More</a>
 							<div class="post-bottom overflow">
-								<span class="post-date pull-left">{{obj.created|date}}</span>
+								<span class="post-date pull-left">{{obj.published|date}}</span>
 								<span class="comments-number pull-right"><i class="fa fa-heart"></i>&nbsp&nbsp&nbsp&nbsp{{obj.total_upvotes}} Love</span>
 							</div>
 						</div>
@@ -88,7 +88,7 @@ BLOG CONTENT
 							{% endif %}
 							<a href="{{obj.get_absolute_url}}" class="read-more">View More</a>
 							<div class="post-bottom overflow">
-								<span class="post-date pull-left">{{obj.created|date}}</span>
+								<span class="post-date pull-left">{{obj.published|date}}</span>
 								<span class="comments-number pull-right"><i class="fa fa-heart"></i>&nbsp&nbsp&nbsp&nbsp{{obj.total_upvotes}} Love</span>
 							</div>
 						</div>

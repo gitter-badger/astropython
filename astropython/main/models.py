@@ -44,6 +44,7 @@ class BasePost(models.Model):
     tags=TaggableManager() #Tags
     created = models.DateTimeField(auto_now_add=True, auto_now=False)  # Date when first revision was created
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)  # Date when last revision was created (even if not published)
+    published =models.DateTimeField(null=True,blank=True)
 
     def __unicode__(self):
 		return self.title
@@ -82,9 +83,9 @@ class Blog(BasePost):
         return reverse('main.views.single',kwargs={'section':'blog','slug':self.slug})
 
 class Package(BasePost):
-    category=models.CharField(max_length=60,choices=PACKAGE_CHOICES,default="Others",help_text='Packages not actively mantained are labelled "Others"')
     homepage=models.URLField(blank=True,verbose_name="Homepage URL")#URL : homepage of the packages
     docs = models.URLField(blank=True,verbose_name="URL to Docs")
+    category=models.ManyToManyField('PackageCategory')
 
     def get_absolute_url(self):
         return reverse('main.views.single',kwargs={'section':'packages','slug':self.slug})
@@ -119,6 +120,7 @@ class Event(models.Model):
     start_date_time = models.DateTimeField(help_text="Format : YYYY-MM-DD")#start time
     end_date_time = models.DateTimeField(blank=True, null=True,help_text="Format : YYYY-MM-DD")#When dies the event end
     all_day_event = models.BooleanField(default=False)#If it is an all day event
+    published =models.DateTimeField(null=True,blank=True)
 
     def __unicode__(self): #Format of representation of event
         date_format = '%Y-%m-%d %I:%M %p'
@@ -152,6 +154,12 @@ class Feed(models.Model):
 
     def __unicode__(self):
 		return self.title
+
+class PackageCategory(models.Model):
+    name=models.CharField(max_length=60)
+
+    def __unicode__(self):
+        return self.name
 
 post_save.connect(add_to_preview,sender=User)
 post_save.connect(add_content,sender=Tutorial)
