@@ -74,9 +74,9 @@ def get_name(name):
 
 def get_exclude_fields(model):
     if model==Event:
-        return ['slug','authors','state','hits']
+        return ['slug','authors','state']
     else:
-        return ['slug','authors','state','hits']
+        return ['slug','authors','state']
 
 def get_create_form(request,exclude_fields,model,kwargs):
     if 'slug' in kwargs:
