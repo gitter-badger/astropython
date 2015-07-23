@@ -116,8 +116,6 @@ def all(request,section,**kwargs):
             obj_list=model.objects.all().filter(state="submitted").order_by('-total_upvotes')
         elif sort=="alphabetical":
              obj_list=model.objects.all().filter(state="submitted").order_by(Lower('title'))
-        elif section=="packages" and sort=="recommended":
-                obj_list=model.objects.all().filter(category="Recommended").order_by('-published')
         else:
             obj_list=model.objects.all().filter(state="submitted").order_by('-published')
     else:
@@ -144,6 +142,15 @@ def all(request,section,**kwargs):
             obj_list=obj_list.filter(~Q(authors__username__startswith = "Feed")).distinct()
         elif f=='feeds':
             obj_list=obj_list.filter(authors__username__startswith = "Feed").distinct()
+        elif f=='recommended':
+            cat=PackageCategory.objects.get(name="Recommended")
+            obj_list=obj_list.filter(category=cat)
+        elif f=='active':
+            cat=PackageCategory.objects.get(name="Active")
+            obj_list=obj_list.filter(category=cat)
+        elif f=='deprecated':
+            cat=PackageCategory.objects.get(name="Deprecated")
+            obj_list=obj_list.filter(category=cat)
     length=len(obj_list)
     if section=="packages":
         paginator = Paginator(obj_list,100)
