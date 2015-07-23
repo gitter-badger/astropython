@@ -18,6 +18,14 @@ def isEven(value,arg):
         return True
     return False
 
+def sort_tags(queryset):
+    t=[]
+    for q in queryset:
+        t.append(q.name)
+    t= sorted(t, key=lambda s: s.lower())
+    return t
+
 register.filter('isEven',isEven)
 register.filter('get_section',get_section)
 register.filter('raw_content', raw_content)
+register.filter('sort_tags', sort_tags)
