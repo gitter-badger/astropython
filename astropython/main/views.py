@@ -78,7 +78,7 @@ def single(request,section,slug,**kwargs):
             return HttpResponseRedirect(reverse('single',kwargs={'section':section,'slug':obj.slug}))
     else:
         form=None
-    recent=model.objects.all().filter(state="submitted").order_by('-created')[:5]
+    recent=model.objects.all().filter(state="submitted").order_by('-published')[:5]
     return render(request,'single.html',{'obj':obj,'section':section,'full_url':request.build_absolute_uri(),"mode":mode,"form":form,"tags":tags,'page':'single','recent':recent})
 
 
@@ -116,15 +116,13 @@ def all(request,section,**kwargs):
             obj_list=model.objects.all().filter(state="submitted").order_by('-total_upvotes')
         elif sort=="alphabetical":
              obj_list=model.objects.all().filter(state="submitted").order_by(Lower('title'))
-        elif section=="packages" and sort=="recommended":
-                obj_list=model.objects.all().filter(category="Recommended").order_by('-created')
         else:
-            obj_list=model.objects.all().filter(state="submitted").order_by('-created')
+            obj_list=model.objects.all().filter(state="submitted").order_by('-published')
     else:
         if section=="packages":
              obj_list=model.objects.all().filter(state="submitted").order_by(Lower('title'))
         else:
-            obj_list=model.objects.all().filter(state="submitted").order_by('-created')
+            obj_list=model.objects.all().filter(state="submitted").order_by('-published')
     if 'tags' in request.GET:
         tags=request.GET['tags']
         t=tags
@@ -144,6 +142,15 @@ def all(request,section,**kwargs):
             obj_list=obj_list.filter(~Q(authors__username__startswith = "Feed")).distinct()
         elif f=='feeds':
             obj_list=obj_list.filter(authors__username__startswith = "Feed").distinct()
+        elif f=='recommended':
+            cat=PackageCategory.objects.get(name="Recommended")
+            obj_list=obj_list.filter(category=cat)
+        elif f=='active':
+            cat=PackageCategory.objects.get(name="Active")
+            obj_list=obj_list.filter(category=cat)
+        elif f=='deprecated':
+            cat=PackageCategory.objects.get(name="Deprecated")
+            obj_list=obj_list.filter(category=cat)
     length=len(obj_list)
     if section=="packages":
         paginator = Paginator(obj_list,100)
@@ -158,7 +165,7 @@ def all(request,section,**kwargs):
     for ob in obj_list:
         tags += ob.tags.all()
     tags=list(set(tags))
-    recent=model.objects.all().filter(state="submitted").order_by('-created')[:5]
+    recent=model.objects.all().filter(state="submitted").order_by('-published')[:5]
     get={'tags':t,'filter':f,'sort':s}
     context = {'name':name,'obj':obj,'section':section,'length':length,'message':message,'tags':tags,'range':range(1,obj.paginator.num_pages+1),'page':'all','recent':recent,'get':get}
     return render(request,'all.html',context)

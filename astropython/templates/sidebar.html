@@ -6,9 +6,6 @@
 	<div class="sidebar-item categories">
 		<h3>Sort by</h3>
 		<ul class="nav navbar-stacked">
-			{% if section == "packages"%}
-			<li><a href="?sort=recommended{% if get.filter %}&filter={{get.filter}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Recommended</a></li>
-			{% endif %}
 			<li><a href="?sort=ratings{% if get.filter %}&filter={{get.filter}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Ratings</a></li>
 			<li><a href="?sort=date{% if get.filter %}&filter={{get.filter}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Date Published</a></li>
 		</ul>
@@ -16,8 +13,14 @@
 	<div class="sidebar-item categories">
 		<h3>Filter Content</h3>
 		<ul class="nav navbar-stacked">
+			{% if section == "packages" %}
+			<li><a href="?filter=recommended{% if get.sort %}&sort={{get.sort}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Recommended</a></li>
+			<li><a href="?filter=active{% if get.sort %}&sort={{get.sort}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Active</a></li>
+			<li><a href="?filter=deprecated{% if get.sort %}&sort={{get.sort}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Deprecated</a></li>
+			{% else %}
 			<li><a href="?filter=native{% if get.sort %}&sort={{get.sort}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Native</a></li>
 			<li><a href="?filter=feeds{% if get.sort %}&sort={{get.sort}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">Contributing Feeds</a></li>
+			{% endif %}
 			<li><a href="?{% if get.sort %}&sort={{get.sort}}{% endif %}{% if get.tags %}&tags={{get.tags}}{% endif %}">All Posts</a></li>
 		</ul>
 	</div>

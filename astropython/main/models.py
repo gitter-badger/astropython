@@ -44,7 +44,7 @@ class BasePost(models.Model):
     tags=TaggableManager() #Tags
     created = models.DateTimeField(auto_now_add=True, auto_now=False)  # Date when first revision was created
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)  # Date when last revision was created (even if not published)
-    published =models.DateTimeField(null=True,blank=True)
+    published =models.DateTimeField(default= timezone.now)
 
     def __unicode__(self):
 		return self.title
