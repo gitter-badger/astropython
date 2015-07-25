@@ -110,7 +110,7 @@ BLOG CONTENT
 <section id="blog-details" class="padding-top">
 <div class="container">
 	<div class="row">
-	<div class="col-md-9 col-sm-9" style="word-wrap: break-word;margin-left:0px;">
+	<div class="col-md-12 col-sm-12" style="word-wrap: break-word;margin-left:0px;">
 		<div class="row">
 			 <div class="col-md-12 col-sm-12">
 			  
@@ -183,20 +183,26 @@ BLOG CONTENT
 								{% endfor %}
 								</ul>
 							</div>
-							<div style="text-align:center">  
+							<div class="panel-heading">
+									<ul class="nav nav-tabs">
+										<li class="active"><a href="#likes" data-toggle="tab">Rate</a></li>
+										<li><a href="#comments" data-toggle="tab">Comment</a></li>
+										<li><a href="#share" data-toggle="tab">Share</a></li>
+									</ul>
+							</div>
+								<div class="tab-content">
+									<div class="tab-pane active" id="likes"><div style="text-align:left">  
 								<a href="./upvote"><i class="glyphicon glyphicon-thumbs-up"></i>&nbsp&nbsp&nbsp <span class="badge">{{obj.total_upvotes}}</span></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-								<a href="./downvote"><i class="glyphicon glyphicon-thumbs-down"></i>&nbsp&nbsp&nbsp <span class="badge">{{obj.total_downvotes}}</span></a>
-								<div class="spacing"></div>
-								<h6>SHARE</h6>
-								<span class='st_facebook_large' displayText='Facebook'></span>
+								<a href="./downvote"><i class="glyphicon glyphicon-thumbs-down"></i>&nbsp&nbsp&nbsp <span class="badge">{{obj.total_downvotes}}</span></a></div>
+									</div>
+									<div class="tab-pane fade" id="comments"><div id="disqus_thread"></div></div>
+									<div class="tab-pane fade" id="share"><span class='st_facebook_large' displayText='Facebook'></span>
 								<span class='st_twitter_large' displayText='Tweet'></span>
 								<span class='st_googleplus_large' displayText='Google +'></span>
-								<span class='st_email_large' displayText='Email'></span>
+								<span class='st_email_large' displayText='Email'></span></div>
+								</div>
 							</div>
-						<div class="response-area">
-						<h2 class="bold">Comments</h2>
-						<div id="disqus_thread" style='margin-top:50px;'></div>
-						</div><!--/Response-area-->
+						
 					</div>
 				</div>
 			</div>
@@ -233,8 +239,6 @@ BLOG CONTENT
 	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 	
 	<!--End of comments section-->
-
-	{% include 'sidebar.html' %}	
 	</div>
 </div>
 </section>
