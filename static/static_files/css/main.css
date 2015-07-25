@@ -81,10 +81,10 @@
 
   .btn-common {
     font-size: 14px;
-    color: #797979;
+    color: #9C7D1F;
     border: 1px solid #9C7D1F;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-weight: bold;
     padding: 10px 25px;
   }
 
@@ -1178,8 +1178,8 @@ Blog Default
 
 .timeline-date .btn-common{
   font-size: 18px;
-  color: #4a4a4a;
-  font-weight: 300;
+  color: #9C7D1F;
+  font-weight: bold;
   border-radius: 0;
   padding: 17px 40px;
 }
