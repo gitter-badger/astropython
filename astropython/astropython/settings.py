@@ -163,6 +163,8 @@ EMAIL_USE_TLS = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+GRAPPELLI_ADMIN_TITLE="AstroPython Admin"
+
 SOCIAL_AUTH_PIPELINE =(
     'social.pipeline.social_auth.social_details',
     'social.pipeline.social_auth.social_uid',
