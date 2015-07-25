@@ -1,4 +1,4 @@
-
+  @import url(http://fonts.googleapis.com/css?family=Marcellus+SC);
   @import url(http://fonts.googleapis.com/css?family=Signika:700,300,400,600);
   @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
   @import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700);
@@ -52,13 +52,14 @@
     list-style: none;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1{
+	font-family: 'Marcellus SC', serif;
+    color: #686868;
+  }
+  
+  h2, h3, h4, h5, h6 {
     font-family: 'Signika', sans-serif;
     font-weight: 300;
-  }
-
-  h1{
-    color: #686868;
   }
 
   h2{
@@ -296,6 +297,7 @@ ul.sub-menu {
 #header .navbar-nav li ul.sub-menu li a:focus{
   background: #9C7D1F ;
   color: white;
+  font-weight:bold;
 }
 
 .fa-angle-down{
@@ -679,7 +681,7 @@ ul.sub-menu {
 
 .title {
   color: #404040;
-  font-weight: 300;
+  font-weight: bold;
 }
 
 .single-features {
@@ -1034,7 +1036,7 @@ Portfolio with right sidebar
   font-size: 14px;
   font-weight: 300;
   padding: 5px 15px;
-  background: #bbbbbb;
+  background: #9C7D1F;
   color: #fff;
   border-radius: 3px;
 }

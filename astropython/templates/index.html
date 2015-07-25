@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="action take-tour">
                         <div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <h1 class="title">New to Python? Give it a try!</h1>
+                            <h1>New to Python? Give it a try!</h1>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
 			{% for post in posts %}
                 <div class="single-features">
                     <div class="col-sm-12 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <a href="{{post.get_absolute_url}}"><h2>{{post.title}}</h2></a>
+                        <h2 class="post-title bold"><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
 						{% filter truncatechars:350 %}
 								<p>{{post.body|raw_content}}</p>{% endfilter %}
                     </div>
@@ -140,7 +140,7 @@
                 <div class="col-sm-12">
                     <div class="clients text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
                         <p><img src="{% static 'images/home/clients.png' %}" class="img-responsive" alt=""></p>
-                        <h1 class="title">Contribute</h1>
+                        <h1>Contribute</h1>
                         <p>Contributions from the community are strongly encouraged. Dive into any of the sections and start creating and contributing.If you wish to add the feed of your blog to our list of aggregated blogs fill in the contribution form below!</p>
                     </div>
                 </div>
