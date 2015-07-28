@@ -23,3 +23,5 @@ Quick set of commands to run the project :-
 6.python manage.py runserver
 
 Goto /admin to access admin panel and under the tab "Django Moderations" approve all posts(especially the wiki post- that is the main Wiki Page)... It would take some time. SQLite 3 is pretty slow , let it complete
+
+Join the chat at https://gitter.im/x-calibre/astropython
